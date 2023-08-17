@@ -20,6 +20,16 @@ namespace Task2
             firstName = newFirstName;
             lastName = newLastName;
         }
+        public string getFistName
+        {
+            get { return firstName; }
+            set { firstName = value; }
+        }
+        public string getLastName
+        {
+            get { return lastName; }
+            set { lastName = value; }
+        }
         public virtual string Info()
         {
             return firstName + " " + lastName;

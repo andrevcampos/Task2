@@ -36,7 +36,7 @@ namespace Task2
                 MessageBox.Show("Last Name Required");
                 return;
             }
-            controller.CreateCustomer(firstname, lastname, staffaccount);
+            controller.Adding(firstname, lastname, staffaccount);
             ManageCustomer form = new ManageCustomer();
             this.Hide();
             form.Show();

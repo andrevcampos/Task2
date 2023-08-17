@@ -28,31 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            mainpage1 = new mainpage();
-            customercp1 = new customercp();
+            button1 = new Button();
             SuspendLayout();
             // 
-            // mainpage1
+            // button1
             // 
-            mainpage1.Location = new Point(12, 12);
-            mainpage1.Name = "mainpage1";
-            mainpage1.Size = new Size(390, 467);
-            mainpage1.TabIndex = 0;
-            // 
-            // customercp1
-            // 
-            customercp1.Location = new Point(12, 12);
-            customercp1.Name = "customercp1";
-            customercp1.Size = new Size(390, 467);
-            customercp1.TabIndex = 1;
+            button1.Location = new Point(80, 114);
+            button1.Name = "button1";
+            button1.Size = new Size(249, 54);
+            button1.TabIndex = 0;
+            button1.Text = "Manage Customers";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(414, 491);
-            Controls.Add(customercp1);
-            Controls.Add(mainpage1);
+            Controls.Add(button1);
             Name = "MainForm";
             Text = "Form1";
             Load += Form1_Load;
@@ -60,7 +54,7 @@
         }
 
         #endregion
-        private mainpage mainpage1;
-        private customercp customercp1;
+
+        private Button button1;
     }
 }

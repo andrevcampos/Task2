@@ -12,16 +12,15 @@ namespace Task2
             InitializeComponent();
             instance = this;
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
-            mainpage1.Visible = true;
-            customercp1.Visible = false;
+
         }
-        public void custmercontrol()
+        private void button1_Click(object sender, EventArgs e)
         {
-            mainpage1.Visible = false;
-            customercp1.Visible = true;
+            ManageCustomer form = new ManageCustomer();
+            form.Show();
+            this.Hide();
         }
     }
 }

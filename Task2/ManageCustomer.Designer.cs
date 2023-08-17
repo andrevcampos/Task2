@@ -43,6 +43,7 @@
             listBox1.Name = "listBox1";
             listBox1.Size = new Size(213, 394);
             listBox1.TabIndex = 0;
+            listBox1.SelectedIndexChanged += listBox1_SelectedIndexChanged;
             // 
             // button1
             // 
@@ -72,6 +73,7 @@
             button3.TabIndex = 3;
             button3.Text = "Edit Selected Customer";
             button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click;
             // 
             // button4
             // 
@@ -81,6 +83,7 @@
             button4.TabIndex = 4;
             button4.Text = "Delete Selected Customer";
             button4.UseVisualStyleBackColor = true;
+            button4.Click += button4_Click;
             // 
             // ManageCustomer
             // 

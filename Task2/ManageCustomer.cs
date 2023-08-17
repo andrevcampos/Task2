@@ -4,9 +4,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Task2
 {
@@ -14,41 +16,19 @@ namespace Task2
     {
         public static ManageCustomer instance;
         Controller controller = new Controller();
+        public static int index = -1;
         private Boolean readfile = true;
         public ManageCustomer()
         {
             InitializeComponent();
             instance = this;
-            ReadTextFile();
+            controller.ReadTextFile();
             DisplayCustomers();
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
 
-        }
-        private void ReadTextFile()
-        {
-            if (readfile)
-            {
-                MessageBox.Show("First Name Required");
-                string[] strArray;
-                var myfile = new StreamReader("../../../data.txt");
-                while (!myfile.EndOfStream)
-                {
-                    strArray = myfile.ReadLine().Split(',');
-                    if (strArray[2] == "true")
-                    {
-                        controller.CreateCustomer(strArray[0], strArray[1], true);
-                    }
-                    else
-                    {
-                        controller.CreateCustomer(strArray[0], strArray[1], false);
-                    }
-                }
-                myfile.Close();
-                readfile = false;
-            }
         }
         public void DisplayCustomers()
         {
@@ -70,6 +50,37 @@ namespace Task2
             AddCustomer form = new AddCustomer();
             this.Hide();
             form.Show();
+        }
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            index = listBox1.SelectedIndex;
+
+        }
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (index >= 0)
+            {
+                EditCustomer form = new EditCustomer();
+                form.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("You must select a customer");
+            }
+        }
+        private void button4_Click(object sender, EventArgs e)
+        {
+            if (index >= 0)
+            {
+                DeleteAccount form = new DeleteAccount();
+                form.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("You must select a customer");
+            }
         }
     }
 }
