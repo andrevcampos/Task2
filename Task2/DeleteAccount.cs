@@ -37,5 +37,13 @@ namespace Task2
             label4.Text = customer.getFistName;
             label5.Text = customer.getLastName;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            controller.Deleting(index);
+            ManageCustomer form = new ManageCustomer();
+            this.Hide();
+            form.Show();
+        }
     }
 }

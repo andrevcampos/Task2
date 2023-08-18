@@ -24,10 +24,6 @@ namespace Task2
                 writer.Write($"{firstname},{lastname},{stallaccount}");
             }
         }
-        public void Finding()
-        {
-            //add
-        }
         public void Editing(int lineIndex, string firstname, string lastname, bool stallaccount)
         {
             string filePath = "../../../data.txt";
@@ -44,9 +40,33 @@ namespace Task2
                 Console.WriteLine("Invalid line index.");
             }
         }
-        public void Deleting()
+        public void Deleting(int index)
         {
-            //add
+            string filePath = "../../../data.txt";
+            string[] lines = File.ReadAllLines(filePath);
+
+            if (index >= 0 && index < lines.Length)
+            {
+                List<string> updatedLines = new List<string>(lines);
+                updatedLines.RemoveAt(index);
+
+                List<string> nonEmptyLines = new List<string>();
+
+                foreach (string line in updatedLines)
+                {
+                    if (!string.IsNullOrEmpty(line.Trim()))
+                    {
+                        nonEmptyLines.Add(line);
+                    }
+                }
+
+                File.WriteAllLines(filePath, nonEmptyLines);
+                Console.WriteLine("Line deleted successfully.");
+            }
+            else
+            {
+                Console.WriteLine("Invalid line index.");
+            }
         }
         public void ReadTextFile()
         {
@@ -54,16 +74,20 @@ namespace Task2
             var myfile = new StreamReader("../../../data.txt");
             while (!myfile.EndOfStream)
             {
-                strArray = myfile.ReadLine().Split(',');
-                if (strArray[2] == "true")
-                {
-                    StaffAccount staffAccount = new StaffAccount(strArray[0], strArray[1]);
-                    customers.Add(staffAccount);
-                }
-                else
-                {
-                    PublicAccount publicAccount = new PublicAccount(strArray[0], strArray[1]);
-                    customers.Add(publicAccount);
+                string line = myfile.ReadLine();
+                if (!string.IsNullOrWhiteSpace(line)) { 
+
+                    strArray = line.Split(',');
+                    if (strArray[2] == "True")
+                    {
+                        StaffAccount staffAccount = new StaffAccount(strArray[0], strArray[1]);
+                        customers.Add(staffAccount);
+                    }
+                    else
+                    {
+                        PublicAccount publicAccount = new PublicAccount(strArray[0], strArray[1]);
+                        customers.Add(publicAccount);
+                    }
                 }
             }
             myfile.Close();

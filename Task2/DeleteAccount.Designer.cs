@@ -55,6 +55,7 @@
             button1.TabIndex = 21;
             button1.Text = "Delete Customer";
             button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // label3
             // 
