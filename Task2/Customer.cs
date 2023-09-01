@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace Task2
 {
+    [Serializable]
     public abstract class Customer
     {
         static int nextCustomersID = 1;
         public int customerID;
         private string firstName;
         private string lastName;
+        public List<Account> accounts = new List<Account>();
         public Customer(string newFirstName, string newLastName)
         {
             customerID = nextCustomersID;
@@ -39,6 +41,7 @@ namespace Task2
             return Info();
         }
     }
+    [Serializable]
     public class StaffAccount : Customer
     {
         private int discount;
@@ -47,6 +50,7 @@ namespace Task2
             discount = 50;
         }
     }
+    [Serializable]
     public class PublicAccount : Customer
     {
         private int discount;

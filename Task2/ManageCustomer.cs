@@ -4,6 +4,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.Runtime.Serialization;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,12 +19,11 @@ namespace Task2
         public static ManageCustomer instance;
         Controller controller = new Controller();
         public static int index = -1;
-        private Boolean readfile = true;
         public ManageCustomer()
         {
             InitializeComponent();
             instance = this;
-            controller.ReadTextFile();
+            controller.ReadBinaryData();
             DisplayCustomers();
         }
 
@@ -74,6 +75,20 @@ namespace Task2
             if (index >= 0)
             {
                 DeleteAccount form = new DeleteAccount();
+                form.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("You must select a customer");
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (index >= 0)
+            {
+                SelectCustomer form = new SelectCustomer();
                 form.Show();
                 this.Hide();
             }

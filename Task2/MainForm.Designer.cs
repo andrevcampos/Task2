@@ -49,7 +49,6 @@
             Controls.Add(button1);
             Name = "MainForm";
             Text = "Form1";
-            Load += Form1_Load;
             ResumeLayout(false);
         }
 

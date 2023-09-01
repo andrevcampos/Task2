@@ -17,6 +17,7 @@ namespace Task2
         public AddCustomer()
         {
             InitializeComponent();
+            controller.ReadBinaryData();
             instance = this;
         }
 
@@ -37,16 +38,11 @@ namespace Task2
                 return;
             }
             controller.Adding(firstname, lastname, staffaccount);
+
             ManageCustomer form = new ManageCustomer();
             this.Hide();
             form.Show();
         }
-
-        private void AddCustomer_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button2_Click(object sender, EventArgs e)
         {
             ManageCustomer form = new ManageCustomer();

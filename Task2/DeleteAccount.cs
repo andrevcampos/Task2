@@ -19,6 +19,7 @@ namespace Task2
         public DeleteAccount()
         {
             InitializeComponent();
+            controller.ReadBinaryData();
             instance = this;
             ReadIndex();
         }
@@ -32,7 +33,6 @@ namespace Task2
         public void ReadIndex()
         {
             index = ManageCustomer.index;
-            controller.ReadTextFile();
             Customer customer = controller.customers[index];
             label4.Text = customer.getFistName;
             label5.Text = customer.getLastName;

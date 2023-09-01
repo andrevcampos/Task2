@@ -18,12 +18,9 @@ namespace Task2
         public EditCustomer()
         {
             InitializeComponent();
+            controller.ReadBinaryData();
             instance = this;
             ReadIndex();
-        }
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -34,7 +31,6 @@ namespace Task2
         public void ReadIndex()
         {
             index = ManageCustomer.index;
-            controller.ReadTextFile();
             Customer customer = controller.customers[index];
             textBox1.Text = customer.getFistName;
             textBox2.Text = customer.getLastName;
@@ -43,17 +39,11 @@ namespace Task2
         {
             string firstname = textBox1.Text;
             string lastname = textBox2.Text;
-            Customer customer = controller.customers[index];
-            customer.getFistName = firstname;
-            customer.getLastName = lastname;
-            if (customer is StaffAccount)
-            {
-                controller.Editing(index, firstname, lastname, true);
-            }
-            else
-            {
-                controller.Editing(index, firstname, lastname, false);
-            }
+            //Customer customer = controller.customers[index];
+            //customer.getFistName = firstname;
+            //customer.getLastName = lastname;
+            controller.Editing(index, firstname, lastname);
+
             ManageCustomer form = new ManageCustomer();
             form.Show();
             this.Hide();

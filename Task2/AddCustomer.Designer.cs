@@ -125,7 +125,6 @@
             Controls.Add(label1);
             Name = "AddCustomer";
             Text = "Form1";
-            Load += AddCustomer_Load;
             ResumeLayout(false);
             PerformLayout();
         }
