@@ -40,6 +40,8 @@ namespace Task2
             controller.Adding(firstname, lastname, staffaccount);
 
             ManageCustomer form = new ManageCustomer();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             if (MessageBox.Show("Account Created successfully", "New Account", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
             {
                 this.Hide();
@@ -54,6 +56,8 @@ namespace Task2
         private void button2_Click(object sender, EventArgs e)
         {
             ManageCustomer form = new ManageCustomer();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             this.Hide();
             form.Show();
         }

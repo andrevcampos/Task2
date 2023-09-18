@@ -19,6 +19,8 @@ namespace Task2
         private void button1_Click(object sender, EventArgs e)
         {
             ManageCustomer form = new ManageCustomer();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             form.Show();
             this.Hide();
         }
@@ -26,6 +28,8 @@ namespace Task2
         private void button2_Click(object sender, EventArgs e)
         {
             AddCustomer form = new AddCustomer();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             this.Hide();
             form.Show();
         }
