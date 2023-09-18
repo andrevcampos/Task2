@@ -39,14 +39,19 @@ namespace Task2
         {
             string firstname = textBox1.Text;
             string lastname = textBox2.Text;
-            //Customer customer = controller.customers[index];
-            //customer.getFistName = firstname;
-            //customer.getLastName = lastname;
             controller.Editing(index, firstname, lastname);
 
             ManageCustomer form = new ManageCustomer();
-            form.Show();
-            this.Hide();
+            if (MessageBox.Show("Account update successfully", "Update Account", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                this.Hide();
+                form.Show();
+            }
+            else
+            {
+                this.Hide();
+                form.Show();
+            }
         }
     }
 }

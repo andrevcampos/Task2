@@ -42,8 +42,16 @@ namespace Task2
         {
             controller.Deleting(index);
             ManageCustomer form = new ManageCustomer();
-            this.Hide();
-            form.Show();
+            if (MessageBox.Show("Account Deleted successfully", "Delete Account", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                this.Hide();
+                form.Show();
+            }
+            else
+            {
+                this.Hide();
+                form.Show();
+            }
         }
     }
 }

@@ -22,5 +22,12 @@ namespace Task2
             form.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            AddCustomer form = new AddCustomer();
+            this.Hide();
+            form.Show();
+        }
     }
 }

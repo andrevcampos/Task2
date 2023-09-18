@@ -40,8 +40,16 @@ namespace Task2
             controller.Adding(firstname, lastname, staffaccount);
 
             ManageCustomer form = new ManageCustomer();
-            this.Hide();
-            form.Show();
+            if (MessageBox.Show("Account Created successfully", "New Account", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+            {
+                this.Hide();
+                form.Show();
+            }
+            else
+            {
+                this.Hide();
+                form.Show();
+            }
         }
         private void button2_Click(object sender, EventArgs e)
         {
