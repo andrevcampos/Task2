@@ -108,7 +108,7 @@
             Controls.Add(button1);
             Controls.Add(listBox1);
             Name = "ManageCustomer";
-            Text = "Form2";
+            Text = "Manage Customers";
             Load += Form2_Load;
             ResumeLayout(false);
         }

@@ -313,7 +313,7 @@
             Controls.Add(label1);
             Controls.Add(button1);
             Name = "SelectCustomer";
-            Text = "Form1";
+            Text = "Manage Account";
             Load += SelectCustomer_Load;
             ((System.ComponentModel.ISupportInitialize)numericUpDown2).EndInit();
             ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
