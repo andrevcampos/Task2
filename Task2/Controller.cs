@@ -10,6 +10,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.IO;
 using static System.Windows.Forms.LinkLabel;
 using System.Reflection;
+using System.Windows.Forms;
 
 namespace Task2
 {
@@ -147,6 +148,16 @@ namespace Task2
             {
                 Console.WriteLine("Invalid line index.");
             }
+        }
+        public void Transfer(int fromaccountIndex, int toaccountIndex, int amount )
+        {
+            int index = ManageCustomer.index;
+            Customer customer = customers[index];
+            Account fromaccount = customer.accounts[fromaccountIndex];
+            Account toaccount = customer.accounts[toaccountIndex];
+            toaccount.Deposit(amount);
+            fromaccount.Withdrawal(amount);
+            WriteBinaryData();
         }
         public void WriteBinaryData()
         {

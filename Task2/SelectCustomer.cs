@@ -128,7 +128,7 @@ namespace Task2
 
                 button6.Visible = true;
             }
-            
+
 
         }
 
@@ -177,7 +177,11 @@ namespace Task2
 
         private void button5_Click(object sender, EventArgs e)
         {
-
+            Transfer form = new Transfer();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
+            this.Hide();
+            form.Show();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -196,7 +200,7 @@ namespace Task2
                 Customer customer = controller.customers[index];
                 Account account = customer.accounts[accountindex];
                 int balance = account.GetBalance;
-                if(balance == 0)
+                if (balance == 0)
                 {
                     controller.DeleteAccount(accountindex);
                     SelectCustomer form = new SelectCustomer();
