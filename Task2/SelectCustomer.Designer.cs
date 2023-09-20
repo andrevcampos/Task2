@@ -94,7 +94,7 @@
             // 
             label18.AutoSize = true;
             label18.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label18.Location = new Point(258, 180);
+            label18.Location = new Point(279, 137);
             label18.Name = "label18";
             label18.Size = new Size(107, 15);
             label18.TabIndex = 47;
@@ -325,6 +325,8 @@
             button7.TabIndex = 55;
             button7.Text = "Interest";
             button7.UseVisualStyleBackColor = false;
+            button7.Visible = false;
+            button7.Click += button7_Click;
             // 
             // SelectCustomer
             // 

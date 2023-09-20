@@ -42,6 +42,8 @@ namespace Task2
                 listBox2.Items.Add(a.Info());
             }
             listBox1.SelectedIndex = -1;
+
+            
         }
 
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -51,6 +53,18 @@ namespace Task2
             int balance = account.GetBalance;
             label4.Visible = true;
             label4.Text = balance.ToString();
+
+            int Fees = account.GetFees();
+
+            if (customer is StaffAccount)
+            {
+                int stafffee = Fees / 2;
+                label6.Text = "Transaction Fee: $" + Fees + " (Staff Account $" + stafffee + ")";
+            }
+            else
+            {
+                label6.Text = "Transaction Fee: $" + Fees;
+            }
         }
 
         private void listBox2_SelectedIndexChanged(object sender, EventArgs e)
@@ -75,6 +89,16 @@ namespace Task2
             Account toaccount = customer.accounts[listBox2.SelectedIndex];
             int tobalance = toaccount.GetBalance;
             int transfer = (int)numericUpDown1.Value;
+            int Fees = fromaccount.GetFees();
+
+            if (customer is StaffAccount)
+            {
+                int stafffee = Fees / 2;
+                Fees = stafffee;
+            }
+
+            int transferplusfee = transfer + Fees;
+
             if (listBox1.SelectedIndex == listBox2.SelectedIndex)
             {
                 MessageBox.Show("You can't transfer to the same account. Please select different accounts.");
@@ -85,12 +109,12 @@ namespace Task2
                 MessageBox.Show("The transfer amount must be positive.");
                 return;
             }
-            if (frombalance < transfer)
+            if (frombalance < transferplusfee)
             {
-                MessageBox.Show("You don't have the funds to transfer this amount.");
+                MessageBox.Show("You don't have the funds to transfer this amount.(Incliding Transactions fee)");
                 return;
             }
-            controller.Transfer(listBox1.SelectedIndex, listBox2.SelectedIndex, transfer);
+            controller.Transfer(listBox1.SelectedIndex, listBox2.SelectedIndex, transfer, Fees);
             SelectCustomer form = new SelectCustomer();
             form.StartPosition = FormStartPosition.Manual;
             form.Location = this.Location;
