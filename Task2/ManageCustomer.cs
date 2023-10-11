@@ -43,12 +43,16 @@ namespace Task2
         private void button1_Click(object sender, EventArgs e)
         {
             MainForm form = new MainForm();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             this.Hide();
             form.Show();
         }
         private void button2_Click(object sender, EventArgs e)
         {
             AddCustomer form = new AddCustomer();
+            form.StartPosition = FormStartPosition.Manual;
+            form.Location = this.Location;
             this.Hide();
             form.Show();
         }
@@ -62,6 +66,8 @@ namespace Task2
             if (index >= 0)
             {
                 EditCustomer form = new EditCustomer();
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = this.Location;
                 form.Show();
                 this.Hide();
             }
@@ -75,6 +81,8 @@ namespace Task2
             if (index >= 0)
             {
                 DeleteAccount form = new DeleteAccount();
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = this.Location;
                 form.Show();
                 this.Hide();
             }
@@ -89,6 +97,8 @@ namespace Task2
             if (index >= 0)
             {
                 SelectCustomer form = new SelectCustomer();
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = this.Location;
                 form.Show();
                 this.Hide();
             }

@@ -70,6 +70,7 @@ namespace Task2
         }
         public abstract int GetFees();
         public abstract int GetInterest();
+        public abstract int GetInterestMax();
         public abstract string GetInterestrandom();
         public abstract int GetOverdraft();
 
@@ -102,6 +103,8 @@ namespace Task2
         }
         public override int GetFees() { return 0; }
         public override int GetInterest() { return 0; }
+
+        public override int GetInterestMax() { return 0; }
         public override string GetInterestrandom() { return "n/a"; }
         public override int GetOverdraft() { return 0; }
 
@@ -110,12 +113,14 @@ namespace Task2
     [Serializable]
     public class Inverstiment : Account
     {
-        private int interestmin = 10;
-        private int interestmax = 20;
+        private int interestmin;
+        private int interestmax;
         private int fees;
 
-        public Inverstiment(int newFee, int newbalance) : base(newbalance)
+        public Inverstiment(int newFee, int newinterestmin, int newinterestmax, int newbalance) : base(newbalance)
         {
+            interestmin = newinterestmin;
+            interestmax = newinterestmax;
             fees = newFee;
         }
         public override int GetFees()
@@ -124,9 +129,11 @@ namespace Task2
         }
         public override int GetInterest()
         {
-            Random rnd = new Random();
-            int randomnumber = rnd.Next(interestmin, interestmax);
-            return randomnumber;
+            return interestmin;
+        }
+        public override int GetInterestMax()
+        {
+            return interestmin;
         }
         public override int GetOverdraft() { return 0; }
         public override string GetInterestrandom()
@@ -139,7 +146,7 @@ namespace Task2
         }
         public override string ToString()
         {
-            return base.ToString() + "Inverstiment Account, Interest Rate:" + GetInterest() + "; Fee: $" + fees + "; Balance: " + base.Balance();
+            return base.ToString() + "Inverstiment Account, Interest Rate:" + GetInterest() + "/" + GetInterestMax() + "; Fee: $" + fees + "; Balance: " + base.Balance();
         }
     }
     [Serializable]
@@ -162,6 +169,7 @@ namespace Task2
         {
             return interest;
         }
+        public override int GetInterestMax() { return 0; }
         public override int GetOverdraft()
         {
             return overdraft;
